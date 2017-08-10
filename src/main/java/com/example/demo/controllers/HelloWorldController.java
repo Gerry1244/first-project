@@ -76,6 +76,7 @@ public class HelloWorldController {
 		mv.addObject("title", title);
 		mv.addObject("message", resultingLoudWords);
 		return mv;
+
 	 
 	@PostMapping("adder")
 	public String addTwoNumbers(@RequestParam(name="left") int first, @RequestParam(name="right") double second, Model model) {
@@ -87,6 +88,6 @@ public class HelloWorldController {
 		model.addAttribute("sum", result);
 		return "helloworld/sum-result";
 	}
-	*/
+*/	
 	
 }
