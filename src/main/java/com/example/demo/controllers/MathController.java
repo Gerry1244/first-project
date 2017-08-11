@@ -15,14 +15,16 @@ public class MathController {
 	// http://localhost:8080/math/adder POST
 
 	@PostMapping("adder")
-	public String addTwoNumbers(@RequestParam(name="left") int first, @RequestParam(name="right") double second, Model model) {
+	public String addTwoNumbers(@RequestParam(name = "left") int first, @RequestParam(name = "right") double second,
+			Model model) {
 		Adder adder = new Adder(first, second);
 		double result = adder.calculate();
-		
 
-		
 		model.addAttribute("sum", result);
 		return "helloworld/sum-result";
 	}
+	
+
+
 
 }
