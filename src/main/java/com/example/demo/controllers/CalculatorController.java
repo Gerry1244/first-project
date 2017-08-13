@@ -10,26 +10,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.models.Adder;
 
 @Controller
-@RequestMapping("/maths")
-public class MathController {
-	
-	@GetMapping("lovely-adder")
-	public String showAddingForm() {
-		return "maths/lovely-adder";
-	}
-	
-	// http://localhost:8080/maths/adder POST
-	@PostMapping("lovely-adder")
-	public String addTwoNumbers(
-		@RequestParam(name = "left") int first,
-		@RequestParam(name = "right") double second,
-		Model model
-	) {
-		Adder adder = new Adder(first, second);	
+@RequestMapping("/Calculate")
+
+public class CalculatorController {
+
+	@PostMapping("")
+	public String addTwoNumbers(@RequestParam(name = "left") int first, @RequestParam(name = "right") double second,
+			ModelAndView model) {
+		Adder adder = new Adder(first, second);
 		double result = adder.calculate();
 
 		model.addAttribute("sum", result);
-		return "maths/lovely-adder";
+		return "Calculator/calculator-result";
 	}
-
+	
+	@GetMapping("")
+	public String adder(Model model) {
+		model.addAttribute("sum", "Enter numbers here");
+		return "Calculator/calculator-result";
+		
+		
+	}
 }

@@ -8,7 +8,7 @@ package com.example.demo.models;
 			firstattempt = message;
 		}
 			
-		public String makelower() {
+		public String quiet() {
 			return firstattempt.toLowerCase(); 
 		}
 

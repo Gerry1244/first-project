@@ -8,7 +8,7 @@ public class Yeller {
 		firstattempt = message;
 	}
 		
-	public String makeupper() {
+	public String makeUpper() {
 		return firstattempt.toUpperCase(); 
 	}
 	
