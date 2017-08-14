@@ -35,7 +35,7 @@ public class Calculator {
 	}
 	
 	public double exponent() {
-		double result = numberone % numbertwo;
+		double result = Math.pow(numberone, numbertwo);
 		return result;
 	}
 

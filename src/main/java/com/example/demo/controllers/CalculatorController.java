@@ -18,65 +18,51 @@ import com.example.demo.models.calculator.Calculator;
 public class CalculatorController {
 
 	@PostMapping("")
-	public ModelAndView addTwoNumbers(
+	public String addTwoNumbers(
 			@RequestParam(name = "left") int first, 
 			@RequestParam(name = "right") double second,
 			@RequestParam(name = "value", required=false) String value, 
 			@RequestParam(name = "mathOperations", required=false) String mathOperations,
 			Model model) {
 		
+		Calculator calc = new Calculator(first, second);
 		Double result = null;
 
 		if (mathOperations.equals("Add")) {
-			Calculator adder = new Calculator(first, second);
-			result = adder.adder();
+			result = calc.adder();
 			
 		} 
 		else if (mathOperations.equals("Subtract")) {
-			Calculator subtractor = new Calculator(first, second);
-			result = subtractor.subtractor();
+			result = calc.subtractor();
 				
 		} 
 		
 		else if (mathOperations.equals("Multiply")) {
-			Calculator multiplier = new Calculator(first, second);
-			result = multiplier.multiplier();
+			result = calc.multiplier();
 			
 		
 		} 
 		else if (mathOperations.equals("Divide")) {
-			Calculator divider = new Calculator(first, second);
-			result = divider.divider();
+			result = calc.divider();
 			
 		} 
+		
 		else if (mathOperations.equals("Modulus")) {
-			Calculator modulus = new Calculator(first, second);
-			result = modulus.modulus();	
-		} 
-		
-		else { (mathOperations.equals("Exponent")) {
-			Calculator exponent = new Calculator(first, second);
-			Object function;
-			result = exponent.exponent();
+			result = calc.modulus();	
+			
+		} else {
+			result = calc.exponent();
 		}
-		}
-	} 
-		
-		private int modulo() {
-		// TODO Auto-generated method stub
-		return 0;
+	 
+	model.addAttribute("sum", result);
+	return "Calculator/calculator-result";	
 	}
-
-		ModelAndView mv = new ModelAndView("Calculator/calculator-result");
-		mv.addObject("sum", result);
-		return mv;	
-
-
+		
 	@GetMapping("")
 	public String adder(Model model) {
-		model.addAttribute("sum", "Enter numbers here");
-		return "Calculator/calculator-result";
+		return "Calculator/calculator-form";
 		
 		
 	}
+	
 }
